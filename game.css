@@ -1,0 +1,78 @@
+ body {
+     position: relative;
+ }
+
+ :root {
+     --scale: 1;
+ }
+
+ article {
+     padding-top: 110px;
+ }
+
+ .mainlogo {
+     margin-left: 0px;
+ }
+
+#aU, #Center, #aZ, #AC{
+ color: rgba(113, 113, 113);
+ /* color: rgba(0,0,0,0.3) */
+} 
+
+ footer {
+     position: fixed;
+     bottom: 0px;
+     left: 0px;
+     background: rgba(52, 53, 54, 0.5);
+     padding: 10px 0px;
+     width: 100%;
+     border-top: 1.5px solid rgba(255, 255, 0, 0.2);
+ }
+
+.footer_link {
+	margin: 0px;
+	list-style: none;
+	overflow: hidden;
+	display: flex;
+	padding-left: 0;
+}
+
+.footer_link li {
+	margin: 0px;
+	padding-left: 0;
+	padding-right: 1em;
+}
+
+.footer_link li a {
+	color: orange;
+}
+
+ .card-body p {
+     height: 4em;
+ }
+
+ @media screen and (max-width:1024px) {
+     .card-body p {
+         height: 5em;
+     }
+ }
+
+ @media screen and (max-width:768px) {
+     article {
+         padding-top: 115px;
+     }
+
+     footer {
+         position: relative;
+         margin-top: 3em;
+     }
+
+     .card-body p {
+         height: 3em;
+     }
+ }
+
+ .card img:hover {
+     cursor: pointer;
+     outline: 4px dotted rgb(3, 153, 223);
+ }
