@@ -209,6 +209,14 @@
      background-size: cover;
      width: 1.7em;
      height: 1.5em;
+     display: inline-block;
+     margin-left: .4em;
+     animation: badgePulse 1.6s ease-in-out infinite;
+ }
+
+ #confettiLayer {
+     position: absolute;
+     inset: 0;
  }
 
  .prevPage {
@@ -371,4 +379,241 @@
 
  #btnHowToMenu {
      background-image: url("../images/BackMenu.png");
+ }
+
+ /* ===== 破紀錄嘉年華 (new-record carnival) ===== */
+ #celebrateLayer {
+     position: fixed;
+     inset: 0;
+     z-index: 1080;
+     pointer-events: none;
+     overflow: hidden;
+ }
+
+ /* 舞台旋轉光束 */
+ #spotlight {
+     position: absolute;
+     inset: -40%;
+     opacity: 0;
+     background: conic-gradient(from 210deg at 50% 18%,
+         rgba(255, 245, 200, .22) 0deg, transparent 20deg,
+         rgba(255, 245, 200, .16) 42deg, transparent 66deg,
+         rgba(255, 245, 200, .22) 92deg, transparent 118deg,
+         rgba(255, 245, 200, .16) 148deg, transparent 176deg,
+         rgba(255, 245, 200, .22) 208deg, transparent 236deg,
+         rgba(255, 245, 200, .16) 268deg, transparent 296deg,
+         rgba(255, 245, 200, .22) 328deg, transparent 352deg);
+     animation: spotSpin 14s linear infinite;
+ }
+
+ @keyframes spotSpin {
+     from { transform: rotate(0deg); }
+     to { transform: rotate(360deg); }
+ }
+
+ /* 金色閃光 */
+ #flash {
+     position: absolute;
+     inset: 0;
+     opacity: 0;
+     background: radial-gradient(circle at 50% 30%,
+         rgba(255, 255, 255, .98) 0%,
+         rgba(255, 226, 128, .8) 32%,
+         rgba(255, 178, 60, .28) 58%,
+         rgba(255, 178, 60, 0) 78%);
+ }
+
+ /* 透明背景的 VERY GOOD 橫幅，直接蓋在棋盤上當主秀 */
+ #veryGoodBanner {
+     position: absolute;
+     left: 50%;
+     top: 27%;
+     width: min(94vw, 1050px);
+     transform: translate(-50%, -50%);
+     filter: drop-shadow(0 12px 26px rgba(255, 190, 80, .55));
+     pointer-events: none;
+ }
+
+ #stageWrap {
+     position: absolute;
+     left: 50%;
+     top: 68%;
+     transform: translate(-50%, -50%);
+     width: min(92vw, 760px);
+     text-align: center;
+ }
+
+ #trophyWrap {
+     position: relative;
+     width: 120px;
+     height: 120px;
+     margin: 0 auto;
+ }
+
+ #trophyHalo {
+     position: absolute;
+     inset: -40px;
+     border-radius: 50%;
+     background: conic-gradient(from 0deg,
+         rgba(255, 215, 0, .85),
+         rgba(255, 110, 199, .5),
+         rgba(120, 235, 255, .6),
+         rgba(255, 215, 0, .85));
+     filter: blur(22px);
+     opacity: .8;
+     animation: haloSpin 6s linear infinite;
+ }
+
+ @keyframes haloSpin {
+     from { transform: rotate(0deg); }
+     to { transform: rotate(360deg); }
+ }
+
+ #trophyImg {
+     position: relative;
+     width: 116px;
+     display: block;
+     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .35));
+ }
+
+ #bigTitle {
+     margin: .12em 0 0;
+     font-size: clamp(2.1rem, 8vw, 4.4rem);
+     font-weight: 900;
+     letter-spacing: .08em;
+     background: linear-gradient(180deg, #fff7d6 0%, #ffd24d 42%, #ff8a3c 100%);
+     -webkit-background-clip: text;
+     background-clip: text;
+     color: transparent;
+     -webkit-text-stroke: 1.5px rgba(140, 70, 0, .45);
+     filter: drop-shadow(0 5px 14px rgba(255, 170, 60, .45));
+ }
+
+ #cheerText {
+     margin: .25em 0 0;
+     font-size: clamp(1rem, 3.2vw, 1.6rem);
+     font-weight: 800;
+     color: #fff;
+     text-shadow: 0 2px 8px rgba(0, 0, 0, .5);
+ }
+
+ #scoreDelta {
+     margin-top: .5em;
+ }
+
+ /* 金色紀錄標籤 (舞台與 win modal 共用) */
+ .deltaItem {
+     display: inline-block;
+     margin: 0 .35em;
+     padding: .22em .8em;
+     border-radius: 999px;
+     background: rgba(255, 255, 250, .92);
+     border: 2px solid #ffb733;
+     color: #7a3b00;
+     font-weight: 800;
+     font-size: clamp(.9rem, 2.8vw, 1.3rem);
+     box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+ }
+
+ .deltaItem .oldNum {
+     color: #b06a2a;
+     text-decoration: line-through;
+     opacity: .75;
+ }
+
+ .deltaItem .newNum {
+     color: #d1246b;
+     font-size: 1.25em;
+     display: inline-block;
+ }
+
+ .confettiPiece {
+     position: absolute;
+     border-radius: 2px;
+ }
+
+ .sparkStar {
+     position: absolute;
+ }
+
+ .sparkStar svg {
+     width: 100%;
+     height: 100%;
+     display: block;
+     filter: drop-shadow(0 0 6px rgba(255, 220, 120, .9));
+ }
+
+ /* win modal 打扮成紀錄海報 */
+ #winHeader {
+     position: relative;
+     overflow: hidden;
+     display: block;
+     text-align: center;
+ }
+
+ #winBanner {
+     margin-top: .35em;
+ }
+
+ #winBanner .recTag {
+     display: inline-block;
+     background: linear-gradient(180deg, #ffe9a8, #ffb733);
+     color: #7a3b00;
+     border: 2px solid #ffb733;
+     border-radius: 999px;
+     padding: .08em .9em;
+     font-weight: 800;
+     font-size: 1.6em;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+ }
+
+ #winModal .modal-body {
+     background: radial-gradient(circle at 50% 42%,
+         rgba(255, 250, 235, .95) 0%,
+         rgba(255, 220, 150, .55) 45%,
+         rgba(255, 170, 90, .25) 100%);
+     border-radius: 14px;
+ }
+
+ #vidplayer {
+     filter: drop-shadow(0 8px 18px rgba(255, 190, 80, .6));
+ }
+
+ .keepCheer {
+     margin-top: .4em;
+     font-weight: 800;
+     color: #b902bc;
+     text-shadow: 0 1px 0 #fff;
+ }
+
+ @keyframes badgePulse {
+
+     0%,
+     100% {
+         transform: scale(1) rotate(0deg);
+     }
+
+     50% {
+         transform: scale(1.22) rotate(-6deg);
+     }
+ }
+
+ @media screen and (max-width: 768px) {
+     #veryGoodBanner {
+         top: 20%;
+         width: 96vw;
+     }
+
+     #stageWrap {
+         top: 63%;
+     }
+
+     #trophyWrap {
+         width: 92px;
+         height: 92px;
+     }
+
+     #trophyImg {
+         width: 88px;
+     }
  }
